@@ -30,6 +30,7 @@ Authors:
 
 """
 
+import sys
 import numpy as np
 import matplotlib.pyplot as plt
 # from numba import njit
@@ -67,8 +68,8 @@ def G_Lpe(IR, nthOct, minFreq, maxFreq, IREndManualCut=None):
     """
     # Code snippet to guarantee that generated object name is
     # the declared at global scope
-    # for frame, line in traceback.walk_stack(None):
-    for framenline in traceback.walk_stack(None):
+    # for frame, line in traceback.walk_stack(sys._getframe()):
+    for framenline in traceback.walk_stack(sys._getframe()):
         # varnames = frame.f_code.co_varnames
         varnames = framenline[0].f_code.co_varnames
         if varnames == ():
@@ -147,8 +148,8 @@ def G_Lps(IR, nthOct, minFreq, maxFreq):
     """
     # Code snippet to guarantee that generated object name is
     # the declared at global scope
-    # for frame, line in traceback.walk_stack(None):
-    for framenline in traceback.walk_stack(None):
+    # for frame, line in traceback.walk_stack(sys._getframe()):
+    for framenline in traceback.walk_stack(sys._getframe()):
         # varnames = frame.f_code.co_varnames
         varnames = framenline[0].f_code.co_varnames
         if varnames == ():
@@ -338,8 +339,8 @@ def analyse(obj, *params,
     """
     # Code snippet to guarantee that generated object name is
     # the declared at global scope
-    # for frame, line in traceback.walk_stack(None):
-    for framenline in traceback.walk_stack(None):
+    # for frame, line in traceback.walk_stack(sys._getframe()):
+    for framenline in traceback.walk_stack(sys._getframe()):
         # varnames = frame.f_code.co_varnames
         varnames = framenline[0].f_code.co_varnames
         if varnames == ():

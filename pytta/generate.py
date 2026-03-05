@@ -31,6 +31,7 @@ For further information see the specific function documentation
 
 
 # Import modules
+import sys
 from pytta import default
 from pytta.classes import SignalObj, RecMeasure, FRFMeasure, \
                           PlayRecMeasure, Streaming
@@ -77,8 +78,8 @@ def sin(Arms=0.5,
     """
     # Code snippet to guarantee that generated object name is
     # the declared at global scope
-    # for frame, line in traceback.walk_stack(None):
-    for framenline in traceback.walk_stack(None):
+    # for frame, line in traceback.walk_stack(sys._getframe()):
+    for framenline in traceback.walk_stack(sys._getframe()):
         # varnames = frame.f_code.co_varnames
         varnames = framenline[0].f_code.co_varnames
         if varnames == ():
@@ -150,10 +151,12 @@ def sweep(freqMin=None,
 
 
     """
+    print("In sweep, b4 bs: " + str(samplingRate))
+
     # Code snippet to guarantee that generated object name is
     # the declared at global scope
-    # for frame, line in traceback.walk_stack(None):
-    for framenline in traceback.walk_stack(None):
+    # for frame, line in traceback.walk_stack(sys._getframe()):
+    for framenline in traceback.walk_stack(sys._getframe()):
         # varnames = frame.f_code.co_varnames
         varnames = framenline[0].f_code.co_varnames
         if varnames == ():
@@ -179,6 +182,7 @@ def sweep(freqMin=None,
     if freqMax is None:
         freqMax = default.freqMax
     if samplingRate is None:
+        print("sweep: sample rate set back to default")
         samplingRate = default.samplingRate
     if fftDegree is None:
         fftDegree = default.fftDegree
@@ -266,8 +270,8 @@ def __do_sweep_windowing(inputSweep,
     # exact sample where the chirp reaches freqMax [Hz]
     freqMaxSample = np.where(freqSweep <= freqMax)
     freqMaxSample = len(freqSweep) - freqMaxSample[-1][-1]
-    windowStart = ss.hann(2*freqMinSample)
-    windowEnd = ss.hann(2*freqMaxSample)
+    windowStart = ss.windows.hann(2*freqMinSample)
+    windowEnd = ss.windows.hann(2*freqMaxSample)
 
     # Uses first half of windowStart, last half of windowEnd, and a vector of
     # ones with the remaining length, in between the half windows
@@ -344,8 +348,8 @@ def colored_noise(color: str or int = 'white',
     """
     # Code snippet to guarantee that generated object name is
     # the declared at global scope
-    # for frame, line in traceback.walk_stack(None):
-    for framenline in traceback.walk_stack(None):
+    # for frame, line in traceback.walk_stack(sys._getframe()):
+    for framenline in traceback.walk_stack(sys._getframe()):
         # varnames = frame.f_code.co_varnames
         varnames = framenline[0].f_code.co_varnames
         if varnames == ():
@@ -459,7 +463,7 @@ def __do_noise_windowing(inputNoise,
                          window):
     # sample equivalent to the first five percent of noise duration
     fivePercentSample = int((5/100) * (noiseSamples))
-    windowStart = ss.hann(2*fivePercentSample)
+    windowStart = ss.windows.hann(2*fivePercentSample)
     fullWindow = np.concatenate((windowStart[0:fivePercentSample],
                                  np.ones(int(noiseSamples-fivePercentSample))))
     newNoise = (fullWindow * inputNoise.T).T
@@ -474,8 +478,8 @@ def impulse(samplingRate=None,
     """
     # Code snippet to guarantee that generated object name is
     # the declared at global scope
-    # for frame, line in traceback.walk_stack(None):
-    for framenline in traceback.walk_stack(None):
+    # for frame, line in traceback.walk_stack(sys._getframe()):
+    for framenline in traceback.walk_stack(sys._getframe()):
         # varnames = frame.f_code.co_varnames
         varnames = framenline[0].f_code.co_varnames
         if varnames == ():
@@ -583,8 +587,8 @@ def measurement(kind='playrec',
     """
     # Code snippet to guarantee that generated object name is
     # the declared at global scope
-    # for frame, line in traceback.walk_stack(None):
-    for framenline in traceback.walk_stack(None):
+    # for frame, line in traceback.walk_stack(sys._getframe()):
+    for framenline in traceback.walk_stack(sys._getframe()):
         # varnames = frame.f_code.co_varnames
         varnames = framenline[0].f_code.co_varnames
         if varnames == ():
@@ -610,6 +614,8 @@ def measurement(kind='playrec',
         inChannels = default.inChannel[:]
     if outChannels is None:
         outChannels = default.outChannel[:]
+
+    print("In generate: " + str(samplingRate))
 
 # Kind REC
     if kind in ['rec', 'record', 'recording', 'r']:
@@ -709,8 +715,8 @@ def stream(IO='IO',
     """
     # Code snippet to guarantee that generated object name is
     # the declared at global scope
-    # for frame, line in traceback.walk_stack(None):
-    for framenline in traceback.walk_stack(None):
+    # for frame, line in traceback.walk_stack(sys._getframe()):
+    for framenline in traceback.walk_stack(sys._getframe()):
         # varnames = frame.f_code.co_varnames
         varnames = framenline[0].f_code.co_varnames
         if varnames == ():
@@ -802,8 +808,8 @@ def octfilter(order: int = 4,
               base: int = 10) -> _OctFilter:
     # Code snippet to guarantee that generated object name is
     # the declared at global scope
-    # for frame, line in traceback.walk_stack(None):
-    for framenline in traceback.walk_stack(None):
+    # for frame, line in traceback.walk_stack(sys._getframe()):
+    for framenline in traceback.walk_stack(sys._getframe()):
         # varnames = frame.f_code.co_varnames
         varnames = framenline[0].f_code.co_varnames
         if varnames == ():

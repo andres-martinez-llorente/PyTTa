@@ -13,6 +13,7 @@
 """
 
 
+import sys
 import time
 import traceback
 import threading
@@ -24,7 +25,7 @@ class InstanceCreationError(Exception):
 
 class RememberInstanceCreationInfo:
     def __init__(self):
-        for frame, _ in traceback.walk_stack(None):
+        for frame, _ in traceback.walk_stack(sys._getframe()):
             varnames = frame.f_code.co_varnames
             if varnames == ():
                 break

@@ -55,6 +55,7 @@ Authors:
 
 """
 
+import sys
 from pytta.classes._base import ChannelObj, ChannelsList
 from pytta import generate, SignalObj, ImpulsiveResponse, Analysis
 from pytta import rooms
@@ -2238,8 +2239,8 @@ class MeasurementPostProcess(object):
         """
         # Code snippet to guarantee that generated object name is
         # the declared at global scope
-        # for frame, line in traceback.walk_stack(None):
-        for framenline in traceback.walk_stack(None):
+        # for frame, line in traceback.walk_stack(sys._getframe()):
+        for framenline in traceback.walk_stack(sys._getframe()):
             # varnames = frame.f_code.co_varnames
             varnames = framenline[0].f_code.co_varnames
             if varnames == ():
@@ -2322,8 +2323,8 @@ class MeasurementPostProcess(object):
         """
         # Code snippet to guarantee that generated object name is
         # the declared at global scope
-        # for frame, line in traceback.walk_stack(None):
-        for framenline in traceback.walk_stack(None):
+        # for frame, line in traceback.walk_stack(sys._getframe()):
+        for framenline in traceback.walk_stack(sys._getframe()):
             # varnames = frame.f_code.co_varnames
             varnames = framenline[0].f_code.co_varnames
             if varnames == ():
@@ -2403,8 +2404,8 @@ class MeasurementPostProcess(object):
         """
         # Code snippet to guarantee that generated object name is
         # the declared at global scope
-        # for frame, line in traceback.walk_stack(None):
-        for framenline in traceback.walk_stack(None):
+        # for frame, line in traceback.walk_stack(sys._getframe()):
+        for framenline in traceback.walk_stack(sys._getframe()):
             # varnames = frame.f_code.co_varnames
             varnames = framenline[0].f_code.co_varnames
             if varnames == ():
@@ -2463,8 +2464,8 @@ class MeasurementPostProcess(object):
         """
         # Code snippet to guarantee that generated object name is
         # the declared at global scope
-        # for frame, line in traceback.walk_stack(None):
-        for framenline in traceback.walk_stack(None):
+        # for frame, line in traceback.walk_stack(sys._getframe()):
+        for framenline in traceback.walk_stack(sys._getframe()):
             # varnames = frame.f_code.co_varnames
             varnames = framenline[0].f_code.co_varnames
             if varnames == ():
@@ -2550,8 +2551,8 @@ class MeasurementPostProcess(object):
         """
         # Code snippet to guarantee that generated object name is
         # the declared at global scope
-        # for frame, line in traceback.walk_stack(None):
-        for framenline in traceback.walk_stack(None):
+        # for frame, line in traceback.walk_stack(sys._getframe()):
+        for framenline in traceback.walk_stack(sys._getframe()):
             # varnames = frame.f_code.co_varnames
             varnames = framenline[0].f_code.co_varnames
             if varnames == ():
@@ -2629,8 +2630,8 @@ class MeasurementPostProcess(object):
         """
         # Code snippet to guarantee that generated object name is
         # the declared at global scope
-        # for frame, line in traceback.walk_stack(None):
-        for framenline in traceback.walk_stack(None):
+        # for frame, line in traceback.walk_stack(sys._getframe()):
+        for framenline in traceback.walk_stack(sys._getframe()):
             # varnames = frame.f_code.co_varnames
             varnames = framenline[0].f_code.co_varnames
             if varnames == ():

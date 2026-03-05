@@ -18,6 +18,7 @@ For further information, check the function specific documentation.
 
 """
 
+import sys
 from pytta import SignalObj, OctFilter, Analysis
 import numpy as np
 from pytta.classes.filter import fractional_octave_frequencies as FOF
@@ -77,8 +78,8 @@ def Lp_ST(sigObjList, nthOct, minFreq, maxFreq, IRManualCut=None):
     """
     # Code snippet to guarantee that generated object name is
     # the declared at global scope
-    # for frame, line in traceback.walk_stack(None):
-    for framenline in traceback.walk_stack(None):
+    # for frame, line in traceback.walk_stack(sys._getframe()):
+    for framenline in traceback.walk_stack(sys._getframe()):
         # varnames = frame.f_code.co_varnames
         varnames = framenline[0].f_code.co_varnames
         if varnames == ():
